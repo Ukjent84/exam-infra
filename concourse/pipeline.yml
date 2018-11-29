@@ -43,7 +43,7 @@ resources:
 - name: monitoring-app
   type: git
   source:
-      uri: https://github.com/Ukjent84/exam-app-1.git
+      uri: https://github.com/Ukjent84/exam-app.git
       branch: master
       private_key: ((deploy_key_app))
 
