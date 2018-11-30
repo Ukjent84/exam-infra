@@ -7,11 +7,11 @@ jobs:
     - get: exam-infra
   - task: mvn_build
     file: exam-infra/concourse/java/task.yml
-    input_mapping: {source: monitoring-app}
+    input_mapping: {source: exam-app}
 
   - task: push_to_heroku
     file: exam-infra/concourse/heroku/push_master_to_heroku.yml
-    input_mapping: {source: monitoring-app}
+    input_mapping: {source: exam-app}
     params:
       app_name: ((heroku_app_name))
       heroku_email: ((heroku_email))
