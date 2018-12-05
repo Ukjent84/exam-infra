@@ -28,5 +28,5 @@ run:
         login ${heroku_email}
         password ${heroku_api_token}
   EOF
-  export H  EROKU_API_KEY=${heroku_api_token}
+  export HEROKU_API_KEY=${heroku_api_token}
   heroku container:release web -a ${app_name}
