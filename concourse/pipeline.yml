@@ -37,6 +37,31 @@ jobs:
       repository: with-state
       rebase: true
 
+#put to resource container registry
+- name: build
+  plan:
+  - aggregate:
+    - get: exam-app
+    - get: exam-infra
+  - task: mvn_build
+    file: exam-infra/concourse/java/task.yml #mvn_build task.yml
+    input_mapping: {source: exam-app}
+  - task: push_to_container_reg
+    file: exam-infra/concourse/heroku/registry_deploy_task.yml
+    input_mapping: {source: exam-app}
+  - put: docker-image-app
+    params:
+      build: exam-app
+
+#deploy images that has passedd
+- name: deploy-ci
+  plan:
+  - aggregate:
+    - get: exam-infra
+    - get: docker-image-app
+      trigger: true
+      passed: [build]
+
 resources:
 
 # Replace with your own repository
@@ -54,3 +79,11 @@ resources:
       uri: git@github.com:Ukjent84/exam-infra.git
       branch: master
       private_key: ((deploy_key_infra))
+
+# Heroku container registry
+- name: docker-image-app
+  type: docker-image
+  source:
+    repository: registry.heroku.com/((heroku_app_name))/web
+    username: ((heroku_email))
+    password: ((heroku_api_key))
