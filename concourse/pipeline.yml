@@ -46,9 +46,6 @@ jobs:
   - task: mvn_build
     file: exam-infra/concourse/java/task.yml #mvn_build task.yml
     input_mapping: {source: exam-app}
-  - task: push_to_container_reg
-    file: exam-infra/concourse/heroku/registry_deploy_task.yml
-    input_mapping: {source: exam-app}
   - put: docker-image-app
     params:
       build: exam-app
