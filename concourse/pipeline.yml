@@ -42,6 +42,7 @@ jobs:
   plan:
   - aggregate:
     - get: exam-app
+      trigger: true
     - get: exam-infra
   - task: mvn_build
     file: exam-infra/concourse/java/task.yml #mvn_build task.yml
