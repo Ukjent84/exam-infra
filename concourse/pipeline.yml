@@ -59,9 +59,9 @@ jobs:
     - get: exam-infra
     - get: docker-image-app
       trigger: true
+      file: exam-infra/concourse/heroku/registry_deploy_task.yml
       passed: [build]
   - task: push_to_heroku
-    file: exam-infra/concourse/heroku/registry_deploy_task.yml
     input_mapping: {source: docker-image-app}
     params:
       app_name: ((heroku_app_name))

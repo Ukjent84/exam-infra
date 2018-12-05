@@ -10,9 +10,9 @@ inputs:
 - name: source
 
 params:
-  heroku_email:
-  heroku_api_token:
-  app_name:
+  heroku_email: ((heroku_email))
+  heroku_api_token: ((heroku_api_key))
+  app_name: ((heroku_app_name))
 
 run:
   path: sh
