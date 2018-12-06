@@ -75,7 +75,7 @@ resources:
 - name: exam-app
   type: git
   source:
-      uri:  git@github.com:Ukjent84/exam-app.git
+      uri:   #Replace with your app git uri (ssh)
       branch: master
       private_key: ((deploy_key_app))
 
@@ -83,7 +83,7 @@ resources:
 - name: exam-infra
   type: git
   source:
-      uri: git@github.com:Ukjent84/exam-infra.git
+      uri: #Replace with your infra git uri (ssh)
       branch: master
       private_key: ((deploy_key_infra))
 
