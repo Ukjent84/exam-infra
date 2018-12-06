@@ -60,7 +60,7 @@ credentials.yaml
    Type 'cat <sshKeynameApp.pub>  and copy this key. in your app repo click on settings---> deploy keys ---> add deploy key and paste 
    the key in there but remember to click "allow write access" right below it.  do the same again for exam-infra.
   
-   -Create a Heroku account and add your heroku email, Heroku app name, and Heroku API key inside   in credentials.yaml 
+   -Create a Heroku account and add your heroku email and Heroku API key inside credentials.yaml 
 
    -Create a StatusCake account and add statuscake_api_key in credentials.yml
    
